@@ -11,6 +11,7 @@ namespace AreaLib.Unit
         public double Area(double[] shapeParams) => -1.0d;
     }
 
+    [TestFixture]
     internal class ShapeRegistryTests
     {
         [Test]
@@ -26,6 +27,15 @@ namespace AreaLib.Unit
             registry.RegisterShape<TestShape>("OtherName");
             Assert.That(registry.GetAvailableShapes()[1], Is.EqualTo("OtherName"));
             Assert.That(registry.GetArea("OtherName", Array.Empty<double>()), Is.EqualTo(-1.0d));
+        }
+
+        [Test]
+        public void UnregisteredShapeAreaTest()
+        {
+            ShapeRegistry registry = new();
+            Assert.Throws<ArgumentException>(() =>
+                registry.GetArea("UnregisteredShape", Array.Empty<double>())
+            );
         }
     }
 }
