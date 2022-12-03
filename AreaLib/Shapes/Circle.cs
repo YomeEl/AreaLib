@@ -10,7 +10,15 @@ namespace AreaLib.Shapes
     {
         public double Area(double[] shapeParams)
         {
-            throw new NotImplementedException();
+            if (shapeParams is null || shapeParams.Length != 1)
+            {
+                throw new ArgumentException("Wrong params count!", nameof(shapeParams));
+            }
+
+            double radius = shapeParams[0];
+            double area = Math.PI * radius * radius;
+
+            return area;
         }
     }
 }

@@ -10,7 +10,9 @@ namespace AreaLib
     {
         public static ShapeRegistry InitializeShapeRegistry()
         {
-            ShapeRegistry shapeRegistry = new ShapeRegistry();
+            ShapeRegistry shapeRegistry = new();
+            shapeRegistry.RegisterShape<Shapes.Circle>();
+            shapeRegistry.RegisterShape<Shapes.Triangle>();
             return shapeRegistry;
         }
     }
