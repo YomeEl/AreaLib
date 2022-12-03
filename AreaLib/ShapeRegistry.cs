@@ -19,17 +19,29 @@ namespace AreaLib
 
         public void RegisterShape<T>(string? name = null) where T : IShape
         {
-            throw new NotImplementedException();
+            name ??= nameof(T);
+            _shapes[name] = typeof(T);
         }
 
         public string[] GetAvailableShapes()
         {
-            throw new NotImplementedException();
+            return _shapes.Keys.ToArray();
         }
 
-        public double GetArea(string shapeName)
+        public double GetArea(string shapeName, double[] shapeParams)
         {
-            throw new NotImplementedException();
+            if (!_shapes.ContainsKey(shapeName))
+            {
+                throw new ArgumentException("Shape is not registered!");
+            }
+
+            var shapeConstructor = _shapes[shapeName].GetConstructor(Type.EmptyTypes);
+            if (shapeConstructor?.Invoke(null) is not IShape shape)
+            {
+                throw new Exception("Something went wrong!");
+            }
+
+            return shape.Area(shapeParams);
         }
     }
 }
