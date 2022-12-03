@@ -2,7 +2,6 @@
 
 [assembly: InternalsVisibleToAttribute("AreaLib.Unit")]
 
-
 namespace AreaLib
 {
     public static class Methods
@@ -15,12 +14,12 @@ namespace AreaLib
             return Registry.GetAvailableShapes();
         }
 
-        public static double GetArea(string shapeName, double[] shapeParams)
+        public static double ComputeArea(string shapeName, double[] shapeParams)
         {
             _lastError = string.Empty;
             try
             {
-                return Registry.GetArea(shapeName, shapeParams);
+                return Registry.ComputeArea(shapeName, shapeParams);
             }
             catch (Exception e)
             {

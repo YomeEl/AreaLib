@@ -1,5 +1,3 @@
-using System.Security.Cryptography.X509Certificates;
-
 namespace AreaLib.Unit
 {
     [TestFixture]
@@ -13,10 +11,10 @@ namespace AreaLib.Unit
         }
 
         [Test]
-        public void GetAreaTest()
+        public void ComputeAreaTest()
         {
             Methods.Registry.RegisterShape<TestShape>();
-            double area = Methods.GetArea("TestShape", Array.Empty<double>());
+            double area = Methods.ComputeArea("TestShape", Array.Empty<double>());
             Assert.That(area, Is.EqualTo(1.0d).Within(double.Epsilon));
         }
     }

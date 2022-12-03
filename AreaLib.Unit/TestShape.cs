@@ -2,6 +2,6 @@
 {
     internal class TestShape : Shapes.IShape
     {
-        public double Area(double[] shapeParams) => 1.0d;
+        public double ComputeArea(double[] shapeParams) => 1.0d;
     }
 }

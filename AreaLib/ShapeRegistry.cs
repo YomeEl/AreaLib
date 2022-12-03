@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using AreaLib.Shapes;
+﻿using AreaLib.Shapes;
 
 namespace AreaLib
 {
@@ -29,7 +23,7 @@ namespace AreaLib
             return _shapes.Keys.ToArray();
         }
 
-        public double GetArea(string shapeName, double[] shapeParams)
+        public double ComputeArea(string shapeName, double[] shapeParams)
         {
             if (!_shapes.ContainsKey(shapeName))
             {
@@ -42,7 +36,7 @@ namespace AreaLib
                 throw new Exception("Something went wrong!");
             }
 
-            return shape.Area(shapeParams);
+            return shape.ComputeArea(shapeParams);
         }
     }
 }
