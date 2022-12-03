@@ -1,4 +1,9 @@
-﻿namespace AreaLib
+﻿using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleToAttribute("AreaLib.Unit")]
+
+
+namespace AreaLib
 {
     public static class Methods
     {
