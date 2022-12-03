@@ -19,8 +19,9 @@ namespace AreaLib
 
         public void RegisterShape<T>(string? name = null) where T : IShape
         {
-            name ??= nameof(T);
-            _shapes[name] = typeof(T);
+            Type type = typeof(T);
+            name ??= type.Name;
+            _shapes[name] = type;
         }
 
         public string[] GetAvailableShapes()
