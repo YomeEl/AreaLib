@@ -2,8 +2,16 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace AreaLib.Unit
 {
+    [TestFixture]
     public class MethodsTests
     {
+        [Test]
+        public void BasicShapesPresenceTest()
+        {
+            string[] shapes = Methods.GetAvailableShapes();
+            Assert.That(shapes, Has.Member("Circle").And.Member("Triangle"));
+        }
+
         [Test]
         public void CircleAreaTest()
         {
@@ -12,6 +20,18 @@ namespace AreaLib.Unit
             double expected = Math.PI * radius * radius;
             
             Assert.That(expected, Is.EqualTo(actual).Within(double.Epsilon));
+        }
+
+        [Test]
+        public void CircleAreaWrongArgsCount()
+        {
+            double radius = 1.0d;
+            double otherThing = 1.0d;
+
+            double[] args = new double[] { radius, otherThing };
+
+            Assert.That(Methods.GetArea("Circle", args), Is.EqualTo(-1.0d).Within(double.Epsilon));
+            Assert.That(Methods.GetLastError(), Is.Not.EqualTo(string.Empty));
         }
 
         [Test]
@@ -27,6 +47,18 @@ namespace AreaLib.Unit
             double expected = Math.Sqrt(s * (s - a) * (s - b) * (s - c));
             
             Assert.That(expected, Is.EqualTo(actual).Within(double.Epsilon));
+        }
+
+        [Test]
+        public void TriangleAreaWrongArgsCount()
+        {
+            double a = 1.0d;
+            double b = 1.0d;
+
+            double[] args = new double[] { a, b };
+
+            Assert.That(Methods.GetArea("Triangle", args), Is.EqualTo(-1.0d).Within(double.Epsilon));
+            Assert.That(Methods.GetLastError(), Is.Not.EqualTo(string.Empty));
         }
     }
 }
