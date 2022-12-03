@@ -17,7 +17,7 @@ namespace AreaLib
             _shapes = new Dictionary<string, Type>();
         }
 
-        public void RegisterShape<T>(string? name) where T : IShape
+        public void RegisterShape<T>(string? name = null) where T : IShape
         {
             throw new NotImplementedException();
         }
@@ -27,7 +27,7 @@ namespace AreaLib
             throw new NotImplementedException();
         }
 
-        public void GetArea(string shapeName)
+        public double GetArea(string shapeName)
         {
             throw new NotImplementedException();
         }
