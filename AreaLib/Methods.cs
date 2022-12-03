@@ -6,12 +6,12 @@
 
         public static string[] GetAvailableShapes()
         {
-            throw new NotImplementedException();
+            return Registry.GetAvailableShapes();
         }
 
         public static double GetArea(string shapeName, double[] shapeParams)
         {
-            throw new NotImplementedException();
+            return Registry.GetArea(shapeName, shapeParams);
         }
 
         public static string GetLastError()
